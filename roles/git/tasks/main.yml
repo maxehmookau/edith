@@ -4,5 +4,5 @@
             state=present
 
 - name: Copy .gitconfig
-  copy: src=../files/gitconfig
-        dest="~/.gitconfig"
+  template: src=../templates/gitconfig.j2
+            dest="~/.gitconfig"

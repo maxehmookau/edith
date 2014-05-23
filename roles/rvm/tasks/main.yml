@@ -1,0 +1,11 @@
+---
+- name: Check RVM is installed
+  stat: path="~/.rvm"
+  register: rvm_installed
+
+- name: Install RVM
+  shell: curl -sSL https://get.rvm.io | bash
+  when: rvm_installed.stat.exists == false
+
+- name: Install Latest Ruby {{ ruby_version }}
+  command: rvm install {{ ruby_version }}
