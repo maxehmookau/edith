@@ -1,0 +1,8 @@
+---
+- name: Install Git
+  homebrew: name=git
+            state=present
+
+- name: Copy .gitconfig
+  copy: src=../files/gitconfig
+        dest="~/.gitconfig"

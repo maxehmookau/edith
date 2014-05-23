@@ -1,0 +1,22 @@
+[user]
+        name = Max Woolf
+        email = max.woolf@boxuk.com
+[alias]
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+        excludesfile = /Users/maxwoolf/.gitignore
+        editor = vim
+        autocrlf = input
+[push]
+        default = current
+[mergetool]
+        keepBackup = false
+        prompt = false
+[color]
+        ui = true
+[difftool]
+        prompt = false
+[merge]
+        tool = kdiff3
+[rerere]
+        enabled = false
