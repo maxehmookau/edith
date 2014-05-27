@@ -1,0 +1,3 @@
+---
+- name: Install Chrome
+  homebrew_cask: name=google-chrome

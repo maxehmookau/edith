@@ -1,0 +1,5 @@
+---
+- name: Install Rails {{ rails_version }}
+  gem: name=rails
+       state=present
+       version={{ rails_version }}

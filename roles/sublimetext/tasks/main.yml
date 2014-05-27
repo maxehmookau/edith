@@ -1,0 +1,24 @@
+---
+- name: Check if installed
+  stat: path="/Applications/Sublime Text.app"
+  register: sublimetext_installed
+
+- debug: msg="Sublime Text is already installed. Skipping..."
+  when: sublimetext_installed.stat.exists == True
+
+- name: Download
+  get_url: url=http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg
+           dest=/tmp/sublimetext.dmg
+  when: sublimetext_installed.stat.exists == False
+
+- name: Mount
+  command: hdiutil attach sublimetext.dmg chdir=/tmp
+  when: sublimetext_installed.stat.exists == False
+
+- name: Copy to Applications
+  command: cp -R /Volumes/Sublime\ Text/Sublime\ Text.app /Applications
+  when: sublimetext_installed.stat.exists == False
+
+- name: Unmount
+  command: hdiutil detach /Volumes/Sublime\ Text
+  when: sublimetext_installed.stat.exists == False
