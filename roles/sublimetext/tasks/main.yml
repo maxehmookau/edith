@@ -23,6 +23,15 @@
   command: hdiutil detach /Volumes/Sublime\ Text
   when: sublimetext_installed.stat.exists == False
 
+- name: Copy Fonts
+  copy: src="../files/{{ item }}.ttf"
+        dest="~/Library/Fonts/{{ item }}.ttf"
+  with_items:
+    - "Anonymous Pro B"
+    - "Anonymous Pro BI"
+    - "Anonymous Pro I"
+    - "Anonymous Pro"
+
 - name: Copy Config
   copy: src=../files/config
-        dest="/Users/maxwoolf/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+        dest="~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
