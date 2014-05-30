@@ -1,0 +1,20 @@
+{
+  "color_scheme": "Packages/User/Colorsublime/themes/LastNight.tmTheme",
+  "default_line_ending": "unix",
+  "font_face": "Fira Mono",
+  "font_size": 13,
+  "line_padding_top": 0.1,
+  "line_padding_bottom": 0.1,
+  "bold_folder_labels": true,
+  "rulers": [80, 120],
+  "create_window_at_startup": false,
+  "ignored_packages":
+  [
+    "Markdown"
+  ],
+  "margin": 2,
+  "tab_size": 2,
+  "theme": "Spacegray.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "use_simple_full_screen": false
+}

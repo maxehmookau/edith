@@ -22,3 +22,7 @@
 - name: Unmount
   command: hdiutil detach /Volumes/Sublime\ Text
   when: sublimetext_installed.stat.exists == False
+
+- name: Copy Config
+  copy: src=../files/config
+        dest="/Users/maxwoolf/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
