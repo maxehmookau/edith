@@ -1,0 +1,71 @@
+# Mostly from here: http://mths.be/osx
+- name: Increase window resize speed for Cocoa applications
+  command: defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+- name: Expand save panel by default
+  command: "{{ item }}"
+  with_items:
+    - defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true 
+    - defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+- name: Expand print panel by default
+  command: "{{ item }}"
+  with_items:
+    - defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+    - defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+- name: Save to Disk (not iCloud)
+  command: defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+- name: Turn of Resume
+  command: defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
+
+- name: Turn off Quarantine
+  command: defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+- name: Turn off natural scrolling
+  command: defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+- name: Repurpose press-and-hold to repeat letters 
+  command: defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+- name: Use the Queen's English
+  command: "{{ item }}"
+  with_items:
+    - defaults write NSGlobalDomain AppleLanguages -array "en"
+    - defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=GBP"
+    - defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+    - defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+- name: Set timezone (London)
+  command: systemsetup -settimezone "Europe/London" > /dev/null
+
+- name: F*ing autocorrect
+  command: defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+- name: iTunes do not repsond to media keys
+  command: launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+- name: Require password immediately after sleep or screen saver
+  command: "{{ item }}"
+  with_items:
+    - defaults write com.apple.screensaver askForPassword -int 1
+    - defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+- name: Disable all window animations
+  command: defaults write com.apple.finder DisableAllAnimations -bool true
+
+- name: Show all hidden files
+  command: defaults write com.apple.finder AppleShowAllFiles -bool true
+
+- name: Show all filename extensions
+  command: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+- name: Enable text selection in Quick Look
+  command: defaults write com.apple.finder QLEnableTextSelection -bool true
+
+- name: Show Library folder
+  command: chflags nohidden ~/Library
+
+- name: Autohide Dock
+  command: defaults write com.apple.dock autohide -bool true
